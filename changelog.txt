@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.2.1
+Date: 2026-06-27
+  Fixes:
+    - Added the missing English locale name for the "crystal-atomic-bomb" recipe (was showing "Unknown key" in tooltips).
+---------------------------------------------------------------------------------------------------
 Version: 1.2.0
 Date: 2026-06-27
   Changes:
