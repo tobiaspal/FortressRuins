@@ -1,0 +1,65 @@
+---------------------------------------------------------------------------------------------------
+Version: 1.1.1
+Date: 25/08/25
+  Changes:
+    - Using add_ruin_sets no longer using depreciated add_ruin_set.
+    - Using remote call no_spawning_on to prevent spawning on any other planet except nauvis, spawn_exclusively_on does not work.
+---------------------------------------------------------------------------------------------------
+Version: 1.1.0
+Date: 25/07/25
+  Changes:
+    - Reworked the settings, a power setting of 10MW will make the purple crystal gen 10MW and the green 5MW.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.9
+Date: 21/07/25
+  Changes:
+    - Fixed compatibility with new merged ruins mod.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.8
+Date: 14/07/25
+  Changes:
+    - Removed Optional dependency for OldAbandonedSettlements as it caused a dependency loop now they will work together
+---------------------------------------------------------------------------------------------------
+Version: 1.0.7
+  Changes:
+    - I noticed duplication of ruins so I fixed it.
+    - Added support for OldAbandonedSettlements a new ruin pack I made so those ruins will also be loaded if the mod is active.
+    - I reduced the health of the crystal generators from 3500 to 1500.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.6
+  Changes:
+    - 2.0 update requires the Ruins Mod (Time Fork) updated by Keysivi created by Bilka.
+    - This ruin set will load The Ruins Mod - Base (Time) ruin set when Fortress Ruins is selected as the ruin pack in mod settings.
+    - Bot duration much shorter the value in settings is multiplied by 60 in the code.
+    - This mod requires better graphics which gives me something to do I suppose.
+    - If a chest cannot be looted its because it was intended for the enemy force of the fortress not the player.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.5
+  Changes:
+    - New power settings! You can now customize the crystals power settings, only the large alien building uses the raw value they all use the optional multipliers K/k W ect.
+    - New spawned bot duration setting in mins max 60.
+    - All new settings are found under startup.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.4
+  Changes:
+    - Changed some steel chests so they can be looted, apparently I missed a few!
+---------------------------------------------------------------------------------------------------
+Version: 1.0.3
+  Changes:
+    - Any Fortress that produced ammo for machinegun turrets now produce explosive rounds and will do so if K2SE is installed.
+    - Added a new item aliencon-robot so now they correctly dock with the roboports.
+    - Matched the buffer sizes with the accumulator on alien generators. 
+---------------------------------------------------------------------------------------------------
+Version: 1.0.2
+  Changes:
+    - Time to live set to 30 mins on combat robots.
+    - Usage Priority is now primary-output.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.1
+  Changes:
+    - compatability, when Fortress Ruins is selected as the ruin pack in mod settings and Red Dwarf ruins is also installed it will include its ruins also.
+    - compatability, when Krastorio2 and the k2 ruins pack is also installed this pack will include its ruins also but Fortress Ruins must be selected under mod settings/map.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.0
+  Changes:
+    - None, initial release.
