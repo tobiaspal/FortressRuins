@@ -1,0 +1,3 @@
+# Keep CI and repo metadata out of the distributed mod zip (git archive honors export-ignore)
+/.github export-ignore
+/.gitattributes export-ignore

@@ -533,7 +533,7 @@ data:extend(
     },
     loot =
     {
-      {item = "green-crystal-fragment", probability = 1, count_min = 25, count_max = 75}
+      {type = "item", name = "green-crystal-fragment", amount_min = 25, amount_max = 75, independent_probability = 1}
     },
     mining_visualisation_tint = {r = 0, g = 1, b = 0, a = 1.000},
     map_color = {r=129, g=105, b=78},
@@ -624,7 +624,7 @@ data:extend(
     },
     loot =
     {
-      {item = "purple-crystal-fragment", probability = 1, count_min = 25, count_max = 75}
+      {type = "item", name = "purple-crystal-fragment", amount_min = 25, amount_max = 75, independent_probability = 1}
     },
     mining_visualisation_tint = {r = 0, g = 1, b = 0, a = 1.000},
     map_color = {r=129, g=105, b=78},
