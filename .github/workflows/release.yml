@@ -1,0 +1,58 @@
+name: Build and release mod
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read mod name/version and verify the tag matches info.json
+        id: mod
+        run: |
+          name=$(python3 -c "import json; print(json.load(open('info.json'))['name'])")
+          version=$(python3 -c "import json; print(json.load(open('info.json'))['version'])")
+          if [ "$version" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Tag '$GITHUB_REF_NAME' does not match info.json version '$version'"
+            exit 1
+          fi
+          {
+            echo "name=$name"
+            echo "version=$version"
+            echo "zip=${name}_${version}.zip"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Build mod zip (top folder must be name_version for Factorio)
+        run: |
+          git archive --format=zip \
+            --prefix="${{ steps.mod.outputs.name }}_${{ steps.mod.outputs.version }}/" \
+            --output="${{ steps.mod.outputs.zip }}" \
+            HEAD
+
+      - name: Extract changelog notes for this version
+        env:
+          VERSION: ${{ steps.mod.outputs.version }}
+        run: |
+          awk -v ver="$VERSION" '
+            { sub(/\r$/, "") }
+            /^Version: /{ cap = ($2 == ver); next }
+            /^-+$/{ if (cap) exit; next }
+            cap
+          ' changelog.txt > notes.md
+          if [ ! -s notes.md ]; then printf '%s\n' "$GITHUB_REF_NAME" > notes.md; fi
+
+      - name: Create GitHub release with the zip attached
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            "${{ steps.mod.outputs.zip }}" \
+            --title "$GITHUB_REF_NAME" \
+            --notes-file notes.md
