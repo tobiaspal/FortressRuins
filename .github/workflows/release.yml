@@ -48,11 +48,15 @@ jobs:
           ' changelog.txt > notes.md
           if [ ! -s notes.md ]; then printf '%s\n' "$GITHUB_REF_NAME" > notes.md; fi
 
-      - name: Create GitHub release with the zip attached
+      - name: Generate SHA-256 checksum for salt source_hash
+        run: sha256sum "${{ steps.mod.outputs.zip }}" > "${{ steps.mod.outputs.zip }}.sha256"
+
+      - name: Create GitHub release with the zip and checksum attached
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "$GITHUB_REF_NAME" \
             "${{ steps.mod.outputs.zip }}" \
+            "${{ steps.mod.outputs.zip }}.sha256" \
             --title "$GITHUB_REF_NAME" \
             --notes-file notes.md
