@@ -308,9 +308,13 @@ local function add_excluded_surfaces()
   remote.call("AbandonedRuins", "no_spawning_on", "aquilo", "FortressRuins")
 end
 
-script.on_init(add_excluded_surfaces)
-script.on_configuration_changed(add_excluded_surfaces)
+-- script.on_init and script.on_load keep only the last handler, so one function registers the ruin set and its excluded surfaces.
+local function register()
+  make_ruin_set()
+  add_excluded_surfaces()
+end
+
 -- The ruin set is always created when the game is loaded, since the ruin sets are not save/loaded by AbandonedRuins.
 -- Since this is using on_load, we must be sure that it always produces the same result for everyone.
-script.on_init(make_ruin_set)
-script.on_load(make_ruin_set)
+script.on_init(register)
+script.on_load(register)

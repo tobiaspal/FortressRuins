@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.2.2
+Date: 2026-11-14
+  Fixes:
+    - The ruins stay off Vulcanus, Gleba, Fulgora and Aquilo: the second on_init handler replaced the one registering these exclusions, and they were lost on every load.
+---------------------------------------------------------------------------------------------------
 Version: 1.2.1
 Date: 2026-06-27
   Fixes:
